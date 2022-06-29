@@ -1,0 +1,2 @@
+def connectToMySQL():
+    return None

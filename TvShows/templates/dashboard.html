@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Howdy, {{user.first_name}}!!!</h1>
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+
+    <h1>All TV Shows</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Network</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for tvshow in tvshows %}
+            <tr>
+                <td>{{tvshow.title}}</td>
+                <td>{{tvshow.network}}</td>
+                <td>{{tvshow.release_date}}</td>
+                <td>
+                    <a href="/show/tvshow/{{tvshow.id}}">show | </a>
+                    {% if tvshow.user_id == session['user_id']: %}
+                        <a href="/edit/tvshow/{{tvshow.id}}">edit | </a>
+                        <a href="/delete/tvshow/{{tvshow.id}}">delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+
+    <a href="/new">
+        <button>Add a New Show</button>
+    </a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add_New_Show</title>
+</head>
+<body>
+    {%with messages = get_flashed_messages()%}
+        {%if messages %}
+            {%for message in messages%}
+                <h3 style="color:red;">{{message}}</h3>
+            {%endfor%}
+        {%endif%}
+    {%endwith%}
+    <h1>Add New Recipe</h1>
+    <a href="/dashboard">
+        <button>TV Shows</button>
+    </a>
+    <a href="/logout">
+        <button>Logout</button>
+    </a>
+    <form action="/create/tvshow" method="POST">
+        <label for="title">Title: </label><br>
+        <input type="text area" name="title"><br>
+
+        <label for="network">Network: </label><br>
+        <input type="text area" name="network"><br>
+
+        <label for="date">Release Date:</label><br>
+        <input type="date" name="date"><br>
+
+        <label for="description">Description: </label><br>
+        <textarea name="instructions"></textarea><br>
+
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>
